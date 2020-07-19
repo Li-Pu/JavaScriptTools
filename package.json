@@ -1,11 +1,17 @@
 {
-  "name": "JavaScriptTools",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/Li-Pu/JavaScriptTools.git",
-  "author": "Li Pu <825369365@qq.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "jest": "^26.1.0"
-  }
+    "name": "JavaScriptTools",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/Li-Pu/JavaScriptTools.git",
+    "author": "Li Pu <825369365@qq.com>",
+    "license": "MIT",
+    "scripts": {
+        "test": "jest"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.10.5",
+        "@babel/preset-env": "^7.10.4",
+        "babel-jest": "^26.1.0",
+        "jest": "^26.1.0"
+    }
 }
