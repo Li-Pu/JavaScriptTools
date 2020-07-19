@@ -1,0 +1,11 @@
+{
+  "name": "JavaScriptTools",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Li-Pu/JavaScriptTools.git",
+  "author": "Li Pu <825369365@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^26.1.0"
+  }
+}
