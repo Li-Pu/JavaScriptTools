@@ -6,24 +6,24 @@ export default function then(onFulfilled, onRejected) {
         if (this.status === Status.FULFILLED) {
             setTimeout(() => {
                 let x = onFulfilled(this.value);
-                resolve(x);
+                resolvePromise(promise2, x, resolve, reject);
             }, 0);
         } else if (this.status === Status.REJECTED) {
             setTimeout(() => {
                 let x = onRejected(this.error);
-                resolve(x);
+                resolvePromise(promise2, x, resolve, reject);
             }, 0);
         } else {
             this.onResolvedCallbacks.push(() => {
                 setTimeout(() => {
                     let x = onFulfilled(this.value);
-                    resolve(x);
+                    resolvePromise(promise2, x, resolve, reject);
                 }, 0);
             });
             this.onRejectedCallbacks.push(() => {
                 setTimeout(() => {
                     let x = onRejected(this.error);
-                    resolve(x);
+                    resolvePromise(promise2, x, resolve, reject);
                 }, 0);
             });
         }
