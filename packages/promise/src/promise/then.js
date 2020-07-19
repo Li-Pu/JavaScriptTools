@@ -2,15 +2,23 @@ import Status from "./status";
 
 export default function then(onFulfilled, onRejected) {
     if (this.status === Status.FULFILLED) {
-        onFulfilled(this.value);
+        setTimeout(() => {
+            onFulfilled(this.value);
+        }, 0);
     } else if (this.status === Status.REJECTED) {
-        onRejected(this.error);
+        setTimeout(() => {
+            onRejected(this.error);
+        }, 0);
     } else {
         this.onResolvedCallbacks.push(() => {
-            onFulfilled(this.value);
+            setTimeout(() => {
+                onFulfilled(this.value);
+            }, 0);
         });
         this.onRejectedCallbacks.push(() => {
-            onRejected(this.error);
+            setTimeout(() => {
+                onRejected(this.error);
+            }, 0);
         });
     }
 }
