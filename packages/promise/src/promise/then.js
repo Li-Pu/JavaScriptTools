@@ -21,14 +21,14 @@ export default function then(onFulfilled, onRejected) {
                 }
             }, 0);
         } else if (this.status === Status.REJECTED) {
-            try {
-                setTimeout(() => {
+            setTimeout(() => {
+                try {
                     let x = onRejected(this.error);
                     resolvePromise(promise2, x, resolve, reject);
-                }, 0);
-            } catch (e) {
-                reject(e);
-            }
+                } catch (e) {
+                    reject(e);
+                }
+            }, 0);
         } else {
             this.onResolvedCallbacks.push(() => {
                 setTimeout(() => {

@@ -18,7 +18,7 @@ export default class Promise {
             if (this.status === Status.PENDING) {
                 this.status = Status.REJECTED;
                 this.error = error;
-                this.onResolvedCallbacks.forEach((fn) => fn());
+                this.onRejectedCallbacks.forEach((fn) => fn());
             }
         };
         try {
