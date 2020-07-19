@@ -1,6 +1,14 @@
 {
-  "name": "promise",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+    "name": "promise",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "build": "rollup src/test/index.js --file dist/promise.js --format cjs",
+        "test:a-plus": "yarn build && promises-aplus-tests dist/promise.js"
+    },
+    "devDependencies": {
+        "promises-aplus-tests": "^2.1.2",
+        "rollup": "^2.22.1"
+    }
 }
