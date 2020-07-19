@@ -1,24 +1,32 @@
 import Status from "./status";
+import resolvePromise from "./resolvePromise";
 
 export default function then(onFulfilled, onRejected) {
-    if (this.status === Status.FULFILLED) {
-        setTimeout(() => {
-            onFulfilled(this.value);
-        }, 0);
-    } else if (this.status === Status.REJECTED) {
-        setTimeout(() => {
-            onRejected(this.error);
-        }, 0);
-    } else {
-        this.onResolvedCallbacks.push(() => {
+    let promise2 = new Promise((resolve, reject) => {
+        if (this.status === Status.FULFILLED) {
             setTimeout(() => {
-                onFulfilled(this.value);
+                let x = onFulfilled(this.value);
+                resolve(x);
             }, 0);
-        });
-        this.onRejectedCallbacks.push(() => {
+        } else if (this.status === Status.REJECTED) {
             setTimeout(() => {
-                onRejected(this.error);
+                let x = onRejected(this.error);
+                resolve(x);
             }, 0);
-        });
-    }
+        } else {
+            this.onResolvedCallbacks.push(() => {
+                setTimeout(() => {
+                    let x = onFulfilled(this.value);
+                    resolve(x);
+                }, 0);
+            });
+            this.onRejectedCallbacks.push(() => {
+                setTimeout(() => {
+                    let x = onRejected(this.error);
+                    resolve(x);
+                }, 0);
+            });
+        }
+    });
+    return promise2;
 }
